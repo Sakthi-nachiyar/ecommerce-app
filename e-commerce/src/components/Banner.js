@@ -5,13 +5,13 @@ import decorImage from "../assets/Decor.png";
 import appliancesImage from "../assets/appliances.png";
 import furnitureImage from "../assets/furniture.png";
 import kitchenWareImage from "../assets/kitchenware.png";
+import { Link } from 'react-router-dom'; 
 
 const Banner = () => {
   const itemData = [
     {
       img: decorImage,
-      title: "Decor",
-      padding:'2px'
+      title: "Home Decor",
     },
     {
       img: appliancesImage,
@@ -19,11 +19,11 @@ const Banner = () => {
     },
     {
       img: furnitureImage,
-      title: "Furniture",
+      title: "Furnishings",
     },
     {
       img: kitchenWareImage,
-      title: "Kitchen Ware",
+      title: "Kitchenware",
     },
   ];
 
@@ -36,27 +36,32 @@ const Banner = () => {
   return (
     <>
       <ImageList
-        sx={{padding:'0px 36px'}}
+        sx={{padding:'0px 30px',height:'220px'}}
         variant="quilted"
         cols={4}
-        rowHeight={127}
-        gap= {232}
+        rowHeight={140}
+        gap= {220}
       >
         {itemData.map((item) => (
           <ImageListItem
             key={item.img}
             cols={item.cols || 1}
             rows={item.rows || 1}
+            style={{ cursor: 'pointer' }}
           >
+          <Link to={item.link}>
             <img
               {...srcset(item.img, 100)}
               alt={item.title}
               loading="lazy"
             />
+            </Link>;
             <ImageListItemBar
                 title={item.title}
+                position="below"
                 sx={{
-                    width:'130px',
+                    width:'100px',
+                    left:'20px'
                   }}
             />
           </ImageListItem>

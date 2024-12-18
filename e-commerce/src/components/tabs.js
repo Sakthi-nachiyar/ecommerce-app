@@ -4,8 +4,11 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-
+import { Box, ImageList, ImageListItem } from "@mui/material";
+import clock from '../assets/clock.png';
+import wallSticker from '../assets/wall sticker.png';
+import fridgeDecor from '../assets/fridgemagnet.png';
+import appliaceImage from '../assets/appliances.png'
 
 
 function TabPanel(props) {
@@ -39,12 +42,52 @@ export default function FullWidthTabs() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0); 
 
-  const handleChange = (newValue) => {
+  const newArrival = [
+    {
+      img: clock,
+      title: "Home Decor",
+    },
+    {
+      img: wallSticker,
+      title: "Appliances",
+    },
+    {
+      img: fridgeDecor,
+      title: "Furnishings",
+    }
+  ];
+
+  const bestSeller = [
+    {
+      img: clock,
+      title: "Home Decor",
+    },
+    {
+      img: wallSticker,
+      title: "Appliances",
+    },
+    {
+      img: appliaceImage,
+      title: "Furnishings",
+    }
+  ];
+
+  const getImage = (index) =>{
+    switch(index){
+      case 0 : 
+      return newArrival;
+      case 1: 
+      return bestSeller;
+      default:
+        return [];
+    }
+  }
+  const handleChange = (event,newValue) => {
     setValue(newValue); 
   };
 
   return (
-    <Box sx={{ bgcolor: 'background.paper', width: 500 }}>
+    <Box sx={{ bgcolor: 'background.paper', width: 500 ,padding:'40px'}}>
       <AppBar position="static">
         <Tabs
           value={value}
@@ -58,12 +101,24 @@ export default function FullWidthTabs() {
           <Tab label="Best sellers" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0} dir={theme.direction}>
+      <ImageList variant="standard" cols={3} gap={8}>
+        {getImage(value).map((item,index) =>(
+           <ImageListItem key={index}>
+           <img
+             src={item.img}
+             alt={item.title}
+             loading="lazy"
+             style={{ width: '100%', borderRadius: '8px' }}
+           />
+          </ImageListItem>
+        ))}
+      </ImageList>
+      {/* <TabPanel value={value} index={0} dir={theme.direction}>
       New Arrivals
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
        Best sellers
-      </TabPanel>
+      </TabPanel> */}
     </Box>
   );
 }

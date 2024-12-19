@@ -13,6 +13,8 @@ import ovenImage from '../assets/oven.jpg'
 import flowerImage from '../assets/flower.jpg'
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import { typography } from '@mui/system';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,14 +51,17 @@ export default function FullWidthTabs() {
     {
       img: clock,
       title: "Wall clock",
+      price:'200/-'
     },
     {
       img: wallSticker,
       title: "Wall sticker",
+      price:'100/-'
     },
     {
       img: fridgeDecor,
       title: "Fridge Magnet",
+      price:'100/-'
     }
   ];
 
@@ -64,14 +69,17 @@ export default function FullWidthTabs() {
     {
       img: flowerImage,
       title: "Flower vase",
+      price:'1000/-'
     },
     {
       img: ovenImage,
       title: "Oven",
+      price:'30,000/-'
     },
     {
       img: dinnerImage,
       title: "Dinner set",
+      price:'2000/-'
     }
   ];
 
@@ -125,13 +133,17 @@ export default function FullWidthTabs() {
               position="below"
               actionIcon={
                 <IconButton
-                  sx={{cursor:'pointer',fontSize:'1rem',padding:'11px',color:'black',borderRadius:'8px',background:'#d4dca4'}}
+                  sx={{cursor:'pointer',padding:'9px',borderRadius:'8px'}}
+                  onClick = {{handleChange}}
                 >
-                  Add to Cart
+                <ShoppingBagOutlinedIcon sx={{color:'#d4dca4'}}/>
                 </IconButton>
               }
               actionPosition="right"
             />
+            <Typography sx={{ margin: '-16px 0px 0px 5px'}}>
+            ₹{item.price}
+            </Typography>
           </ImageListItem>
         ))}
       </ImageList>

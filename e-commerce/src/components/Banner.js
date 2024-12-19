@@ -36,7 +36,7 @@ const Banner = () => {
   return (
     <>
       <ImageList
-        sx={{padding:'0px 30px',height:'220px'}}
+        sx={{padding:'0px 30px',height:'220px',justifyItems:'center'}}
         variant="quilted"
         cols={4}
         rowHeight={140}

@@ -8,8 +8,10 @@ import { Box, ImageList, ImageListItem } from "@mui/material";
 import clock from '../assets/clock.png';
 import wallSticker from '../assets/wall sticker.png';
 import fridgeDecor from '../assets/fridgemagnet.png';
-import appliaceImage from '../assets/appliances.png'
-
+import dinnerImage from '../assets/dinner.jpg'
+import ovenImage from '../assets/oven.jpg'
+import flowerImage from '../assets/flower.jpg'
+import Button from '@mui/material/Button';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,15 +61,15 @@ export default function FullWidthTabs() {
 
   const bestSeller = [
     {
-      img: clock,
+      img: flowerImage,
       title: "Home Decor",
     },
     {
-      img: wallSticker,
+      img: ovenImage,
       title: "Appliances",
     },
     {
-      img: appliaceImage,
+      img: dinnerImage,
       title: "Furnishings",
     }
   ];
@@ -87,7 +89,9 @@ export default function FullWidthTabs() {
   };
 
   return (
-    <Box sx={{ bgcolor: 'background.paper', width: 500 ,padding:'40px'}}>
+    <>
+    <Box sx={{ bgcolor: 'background.paper', width: 800 ,padding:'40px'}}>
+      <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',mb:2}}>
       <AppBar position="static">
         <Tabs
           value={value}
@@ -101,7 +105,9 @@ export default function FullWidthTabs() {
           <Tab label="Best sellers" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <ImageList variant="standard" cols={3} gap={8}>
+      <Button variant="contained" style={{minWidth:'130px',left:'242px'}}>Shop All</Button>
+      </Box>
+      <ImageList variant="standard" cols={3} gap={30}>
         {getImage(value).map((item,index) =>(
            <ImageListItem key={index}>
            <img
@@ -119,6 +125,7 @@ export default function FullWidthTabs() {
       <TabPanel value={value} index={1} dir={theme.direction}>
        Best sellers
       </TabPanel> */}
-    </Box>
+    </Box>  
+    </>
   );
 }

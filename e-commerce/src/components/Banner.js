@@ -6,7 +6,7 @@ import appliancesImage from "../assets/appliances.png";
 import furnitureImage from "../assets/furniture.png";
 import kitchenWareImage from "../assets/kitchenware.png";
 import { Link } from 'react-router-dom'; 
-
+import HomePageTab from "./homePageTab"
 const Banner = () => {
   const itemData = [
     {
@@ -76,6 +76,7 @@ const Banner = () => {
           />
         </Box>
       </div>
+      <HomePageTab />
     </>
   );
 };

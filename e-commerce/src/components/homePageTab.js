@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { typography } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,10 +44,11 @@ function a11yProps(index) {
   };
 }
 
-export default function FullWidthTabs() {
+export default function HomePageTab() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0); 
 
+  const navigate = useNavigate();
   const newArrival = [
     {
       img: clock,
@@ -96,7 +98,9 @@ export default function FullWidthTabs() {
   const handleChange = (event,newValue) => {
     setValue(newValue); 
   };
-
+  const handleShopAllClick = () => {
+    navigate('/product-list'); // Navigate to the Product List page
+  };
   return (
     <>
     <Box sx={{ bgcolor: 'background.paper', width: 800 ,padding:'40px'}}>
@@ -114,7 +118,7 @@ export default function FullWidthTabs() {
           <Tab label="Best sellers" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <Button variant="contained" style={{minWidth:'130px',left:'242px'}}>Shop All</Button>
+      <Button variant="contained" onClick={handleShopAllClick} style={{minWidth:'130px',left:'242px'}}>Shop All</Button>
       </Box>
       <ImageList variant="standard" cols={3} gap={30}>
         {getImage(value).map((item,index) =>(
@@ -147,12 +151,6 @@ export default function FullWidthTabs() {
           </ImageListItem>
         ))}
       </ImageList>
-      {/* <TabPanel value={value} index={0} dir={theme.direction}>
-      New Arrivals
-      </TabPanel>
-      <TabPanel value={value} index={1} dir={theme.direction}>
-       Best sellers
-      </TabPanel> */}
     </Box>  
     </>
   );

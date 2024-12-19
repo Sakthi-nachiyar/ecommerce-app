@@ -1,23 +1,23 @@
-// src/App.tsx
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import globalTheme from './components/theme';
-import SearchAppBar from './components/NavBar';
-import FullWidthTabs from './components/tabs'; 
-import CartPage from './components/add-to-cart'; 
-import Banner from './components/Banner';
+import SearchAppBar from './components/navbar';
+import CartPage from './components/addToCart'; 
+import Banner from './components/banner';
+import ProductList from "./components/productList"
 
 function App() {
   return (
     <ThemeProvider theme={globalTheme}>
       <Router>
         <SearchAppBar />
-        <Banner/>
         <br/>
         <Routes>
-          <Route path="/" element={<FullWidthTabs />} />
+          <Route path="/" element={<Banner />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path ="/product-list" element ={<ProductList />} />
         </Routes>
       </Router>
     </ThemeProvider>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -14,28 +13,7 @@ import flowerImage from '../assets/flower.jpg'
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import { typography } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
 
 function a11yProps(index) {
   return {
@@ -45,7 +23,6 @@ function a11yProps(index) {
 }
 
 export default function HomePageTab() {
-  const theme = useTheme();
   const [value, setValue] = React.useState(0); 
 
   const navigate = useNavigate();

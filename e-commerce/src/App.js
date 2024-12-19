@@ -6,13 +6,14 @@ import globalTheme from './components/theme';
 import SearchAppBar from './components/NavBar';
 import FullWidthTabs from './components/tabs'; 
 import CartPage from './components/add-to-cart'; 
+import Banner from './components/Banner';
 
 function App() {
   return (
     <ThemeProvider theme={globalTheme}>
       <Router>
-       
         <SearchAppBar />
+        <Banner/>
         <br/>
         <Routes>
           <Route path="/" element={<FullWidthTabs />} />

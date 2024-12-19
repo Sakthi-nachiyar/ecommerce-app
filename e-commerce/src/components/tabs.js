@@ -4,7 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import { Box, ImageList, ImageListItem } from "@mui/material";
+import { Box, ImageList, ImageListItem,ImageListItemBar } from "@mui/material";
 import clock from '../assets/clock.png';
 import wallSticker from '../assets/wall sticker.png';
 import fridgeDecor from '../assets/fridgemagnet.png';
@@ -12,6 +12,7 @@ import dinnerImage from '../assets/dinner.jpg'
 import ovenImage from '../assets/oven.jpg'
 import flowerImage from '../assets/flower.jpg'
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,30 +48,30 @@ export default function FullWidthTabs() {
   const newArrival = [
     {
       img: clock,
-      title: "Home Decor",
+      title: "Wall clock",
     },
     {
       img: wallSticker,
-      title: "Appliances",
+      title: "Wall sticker",
     },
     {
       img: fridgeDecor,
-      title: "Furnishings",
+      title: "Fridge Magnet",
     }
   ];
 
   const bestSeller = [
     {
       img: flowerImage,
-      title: "Home Decor",
+      title: "Flower vase",
     },
     {
       img: ovenImage,
-      title: "Appliances",
+      title: "Oven",
     },
     {
       img: dinnerImage,
-      title: "Furnishings",
+      title: "Dinner set",
     }
   ];
 
@@ -116,6 +117,21 @@ export default function FullWidthTabs() {
              loading="lazy"
              style={{ width: '100%', borderRadius: '8px' }}
            />
+            <ImageListItemBar
+              sx={{
+                  fontSize:10,padding:'4px'
+              }}
+              title={item.title}
+              position="below"
+              actionIcon={
+                <IconButton
+                  sx={{cursor:'pointer',fontSize:'1rem',padding:'11px',color:'black',borderRadius:'8px',background:'#d4dca4'}}
+                >
+                  Add to Cart
+                </IconButton>
+              }
+              actionPosition="right"
+            />
           </ImageListItem>
         ))}
       </ImageList>

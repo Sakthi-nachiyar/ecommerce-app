@@ -1,4 +1,3 @@
-// src/components/SearchAppBar.tsx
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -10,8 +9,10 @@ import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
 import { useNavigate } from "react-router-dom";
 import LogoImage from "../assets/Logo.png";
+import { CartContext } from "../context/cart-context";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -55,6 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar() {
   const navigate = useNavigate();
+  const { cartItems } = React.useContext(CartContext);
 
   const handleCartClick = () => {
     navigate("/cart");
@@ -97,7 +99,9 @@ export default function SearchAppBar() {
             sx={{ ml: 2 }}
             onClick={handleCartClick}
           >
-            <ShoppingCartIcon />
+            <Badge badgeContent={cartItems.length} color="secondary">
+              <ShoppingCartIcon />
+            </Badge>
           </IconButton>
         </Toolbar>
       </AppBar>

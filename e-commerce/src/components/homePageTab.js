@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useContext } from "react";
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -14,7 +14,10 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { useNavigate } from 'react-router-dom';
-import {allProducts} from '../components/data'
+import {allProducts} from '../components/data';
+import { CartContext } from "../context/cart-context";
+
+
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
@@ -24,6 +27,7 @@ function a11yProps(index) {
 
 export default function HomePageTab() {
   const [value, setValue] = React.useState(0); 
+    const { addToCart } = useContext(CartContext);
   
   const navigate = useNavigate();
   const newArrival = [
@@ -117,8 +121,8 @@ export default function HomePageTab() {
               actionIcon={
                 <IconButton
                   sx={{cursor:'pointer',padding:'9px',borderRadius:'8px'}}
-                  onClick = {{handleChange}}
-                >
+                  onClick={() => addToCart({ ...item, id: index })}
+                  >
                 <ShoppingBagOutlinedIcon sx={{color:'#d4dca4'}}/>
                 </IconButton>
               }

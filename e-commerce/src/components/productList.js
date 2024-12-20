@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Typography,
   Box,
@@ -7,6 +7,7 @@ import {
   ImageListItemBar,
   Breadcrumbs,
   Link,
+  Button
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import clock from "../assets/clock.png";
@@ -21,12 +22,21 @@ import wallHangingImage from "../assets/wallHanging.png";
 import wallClockImage from "../assets/wallClock.png";
 import IconButton from "@mui/material/IconButton";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import FilterListIcon from '@mui/icons-material/FilterList';
+import FilterComp from "./filter"
 
 const ProductList = () => {
   const navigate = useNavigate();
+  const [showFilter, setShowFilter] = useState(false);
+
   const handleHomeClick = () => {
     navigate("/");
   };
+
+  const handleFilter = () => {
+    setShowFilter(!showFilter);
+  };
+
   const productList = [
     {
       img: clock,
@@ -94,6 +104,7 @@ const ProductList = () => {
           <Typography color="text.primary">Product List</Typography>
         </Breadcrumbs>
       </div>
+      <Button className="flex justify-end" variant="contained" onClick={handleFilter} startIcon={<FilterListIcon />} >Filter</Button>
       <Box
         sx={{
           display: "flex",
@@ -141,7 +152,9 @@ const ProductList = () => {
           ))}
         </ImageList>
       </Box>
+      {showFilter && <FilterComp anchor="right" open={showFilter} toggleDrawer={setShowFilter} />}
     </>
   );
 };
+
 export default ProductList;

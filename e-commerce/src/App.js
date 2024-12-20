@@ -5,7 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import globalTheme from './components/theme';
 import SearchAppBar from './components/NavBar';
 import CartPage from './components/addToCart'; 
-import Banner from './components/Banner';
+import Banner from './components/banner';
 import ProductList from "./components/productList"
 
 function App() {

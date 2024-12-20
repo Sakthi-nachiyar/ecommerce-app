@@ -10,8 +10,6 @@ import {
   Button
 } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
-
-
 import IconButton from "@mui/material/IconButton";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FilterListIcon from '@mui/icons-material/FilterList';
@@ -43,7 +41,7 @@ const ProductList = () => {
           >
             Home
           </Link>
-          <Typography color="text.primary">Product List</Typography>
+          <Typography color="text.primary">{page}</Typography>
         </Breadcrumbs>
       </div>
       <Button className="flex justify-end" variant="contained" onClick={handleFilter} startIcon={<FilterListIcon />} >Filter</Button>

@@ -42,7 +42,7 @@ const ProductList = () => {
           >
             Home
           </Link>
-          <Typography color="text.primary">Product List</Typography>
+          <Typography color="text.primary">{page}</Typography>
         </Breadcrumbs>
       </div>
       <Box

@@ -24,7 +24,7 @@ function a11yProps(index) {
 
 export default function HomePageTab() {
   const [value, setValue] = React.useState(0); 
-
+  
   const navigate = useNavigate();
   const newArrival = [
     {

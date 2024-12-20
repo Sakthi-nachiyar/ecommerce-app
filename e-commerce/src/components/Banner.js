@@ -5,7 +5,7 @@ import decorImage from "../assets/Decor.png";
 import appliancesImage from "../assets/appliances.png";
 import furnitureImage from "../assets/furniture.png";
 import kitchenWareImage from "../assets/kitchenware.png";
-import {decor,appliances,furniture,kitchenware} from '../components/data'
+import {decor,appliances,furniture,kitchenware} from './data'
 import { Link } from 'react-router-dom'; 
 import HomePageTab from "./homePageTab"
 const Banner = () => {

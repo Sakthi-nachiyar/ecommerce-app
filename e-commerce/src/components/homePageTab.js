@@ -14,7 +14,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { useNavigate } from 'react-router-dom';
-
+import {allProducts} from '../components/data'
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
@@ -76,7 +76,9 @@ export default function HomePageTab() {
     setValue(newValue); 
   };
   const handleShopAllClick = () => {
-    navigate('/product-list'); // Navigate to the Product List page
+    const page = 'Shop All'
+    const productList = allProducts
+    navigate('/product-list',{ state: { productList,page} }); // Navigate to the Product List page
   };
   return (
     <>

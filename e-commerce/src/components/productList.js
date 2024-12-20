@@ -9,17 +9,7 @@ import {
   Link,
   Button
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import clock from "../assets/clock.png";
-import wallSticker from "../assets/wall sticker.png";
-import fridgeDecor from "../assets/fridgemagnet.png";
-import dinnerImage from "../assets/dinner.jpg";
-import ovenImage from "../assets/oven.jpg";
-import flowerImage from "../assets/flower.jpg";
-import craneImage from "../assets/crane.png";
-import showPieceImage from "../assets/showPiece.png";
-import wallHangingImage from "../assets/wallHanging.png";
-import wallClockImage from "../assets/wallClock.png";
+import { useNavigate, useLocation } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FilterListIcon from '@mui/icons-material/FilterList';
@@ -101,7 +91,7 @@ const ProductList = () => {
           >
             Home
           </Link>
-          <Typography color="text.primary">Product List</Typography>
+          <Typography color="text.primary">{page}</Typography>
         </Breadcrumbs>
       </div>
       <Button className="flex justify-end" variant="contained" onClick={handleFilter} startIcon={<FilterListIcon />} >Filter</Button>

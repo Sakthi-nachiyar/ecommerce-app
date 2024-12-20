@@ -5,6 +5,7 @@ import decorImage from "../assets/Decor.png";
 import appliancesImage from "../assets/appliances.png";
 import furnitureImage from "../assets/furniture.png";
 import kitchenWareImage from "../assets/kitchenware.png";
+import {decor} from '../components/data'
 import { Link } from 'react-router-dom'; 
 import HomePageTab from "./homePageTab"
 const Banner = () => {
@@ -12,18 +13,22 @@ const Banner = () => {
     {
       img: decorImage,
       title: "Home Decor",
+      state: { productList: decor, page:'Home Decor'} // Navigate to the Product List page
     },
     {
       img: appliancesImage,
       title: "Appliances",
+        state: { productList: decor, page:'Appliances'} 
     },
     {
       img: furnitureImage,
       title: "Furnishings",
+     state: { productList: decor, page:'Furnishings'}
     },
     {
       img: kitchenWareImage,
       title: "Kitchenware",
+       state: { productList: decor, page:'Kitchenware'} 
     },
   ];
 
@@ -49,7 +54,7 @@ const Banner = () => {
             rows={item.rows || 1}
             style={{ cursor: 'pointer' }}
           >
-          <Link to={item.link}>
+          <Link to={'/product-list'} state={item.state}>
             <img
               {...srcset(item.img, 100)}
               alt={item.title}

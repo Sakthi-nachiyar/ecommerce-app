@@ -19,15 +19,16 @@ const ProductList = () => {
   const navigate = useNavigate();
   const [showFilter, setShowFilter] = useState(false);
 
-  const handleHomeClick = () => {
-    navigate("/");
-  };
 
   const handleFilter = () => {
     setShowFilter(!showFilter);
   };
-
-  const productList = [
+  const { state } = useLocation(); // Get state from location
+  const { productList, page } = state; 
+  const handleHomeClick = () => {
+    navigate("/");
+  };
+  const productLists = [
     {
       img: clock,
       title: "Wall clock",
@@ -106,7 +107,7 @@ const ProductList = () => {
         }}
       >
         <ImageList variant="standard" cols={4} gap={30}>
-          {productList.map((item, index) => (
+          {productLists.map((item, index) => (
             <ImageListItem key={index}>
               <img
                 src={item.img}

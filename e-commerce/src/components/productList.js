@@ -11,16 +11,7 @@ import {
 } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import clock from "../assets/clock.png";
-import wallSticker from "../assets/wall sticker.png";
-import fridgeDecor from "../assets/fridgemagnet.png";
-import dinnerImage from "../assets/dinner.jpg";
-import ovenImage from "../assets/oven.jpg";
-import flowerImage from "../assets/flower.jpg";
-import craneImage from "../assets/crane.png";
-import showPieceImage from "../assets/showPiece.png";
-import wallHangingImage from "../assets/wallHanging.png";
-import wallClockImage from "../assets/wallClock.png";
+
 import IconButton from "@mui/material/IconButton";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FilterListIcon from '@mui/icons-material/FilterList';
@@ -59,10 +50,10 @@ const ProductList = () => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center", // Centers horizontally
-          alignItems: "center", // Centers vertically
-          minHeight: "100vh", // Ensures full viewport height
-          flexDirection: "column", // Optional: Center items vertically in the box
+          justifyContent: "center", 
+          alignItems: "center", 
+          minHeight: "100vh", 
+          flexDirection: "column", 
           margin:'10px 20px'
         }}
       >

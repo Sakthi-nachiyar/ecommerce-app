@@ -9,7 +9,8 @@ import {
   Link,
   Button
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import clock from "../assets/clock.png";
 import wallSticker from "../assets/wall sticker.png";
 import fridgeDecor from "../assets/fridgemagnet.png";
@@ -28,7 +29,8 @@ import FilterComp from "./filter"
 const ProductList = () => {
   const navigate = useNavigate();
   const [showFilter, setShowFilter] = useState(false);
-
+  const { state } = useLocation(); // Get state from location
+  const { productList, page } = state;
   const handleHomeClick = () => {
     navigate("/");
   };
@@ -37,58 +39,7 @@ const ProductList = () => {
     setShowFilter(!showFilter);
   };
 
-  const productList = [
-    {
-      img: clock,
-      title: "Wall clock",
-      price: "200/-",
-    },
-    {
-      img: wallSticker,
-      title: "Wall sticker",
-      price: "100/-",
-    },
-    {
-      img: fridgeDecor,
-      title: "Fridge Magnet",
-      price: "100/-",
-    },
-    {
-      img: flowerImage,
-      title: "Flower vase",
-      price: "1000/-",
-    },
-    {
-      img: ovenImage,
-      title: "Oven",
-      price: "30,000/-",
-    },
-    {
-      img: dinnerImage,
-      title: "Dinner set",
-      price: "2000/-",
-    },
-    {
-      img: showPieceImage,
-      title: "flower pots",
-      price: "1000/-",
-    },
-    {
-      img: craneImage,
-      title: "crane show Piece",
-      price: "1500/-",
-    },
-    {
-      img: wallHangingImage,
-      title: "Wall Hanging",
-      price: "2500/-",
-    },
-    {
-      img: wallClockImage,
-      title: "Wall clock",
-      price: "250/-",
-    },
-  ];
+ 
 
   return (
     <>

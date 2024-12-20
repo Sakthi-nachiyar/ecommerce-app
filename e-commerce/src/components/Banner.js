@@ -5,7 +5,7 @@ import decorImage from "../assets/Decor.png";
 import appliancesImage from "../assets/appliances.png";
 import furnitureImage from "../assets/furniture.png";
 import kitchenWareImage from "../assets/kitchenware.png";
-import {decor} from '../components/data'
+import {decor,appliances,furniture,kitchenware} from '../components/data'
 import { Link } from 'react-router-dom'; 
 import HomePageTab from "./homePageTab"
 const Banner = () => {
@@ -18,17 +18,17 @@ const Banner = () => {
     {
       img: appliancesImage,
       title: "Appliances",
-        state: { productList: decor, page:'Appliances'} 
+        state: { productList: appliances, page:'Appliances'} 
     },
     {
       img: furnitureImage,
       title: "Furnishings",
-     state: { productList: decor, page:'Furnishings'}
+     state: { productList: furniture, page:'Furnishings'}
     },
     {
       img: kitchenWareImage,
       title: "Kitchenware",
-       state: { productList: decor, page:'Kitchenware'} 
+       state: { productList: kitchenware, page:'Kitchenware'} 
     },
   ];
 

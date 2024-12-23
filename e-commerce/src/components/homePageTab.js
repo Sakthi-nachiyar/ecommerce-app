@@ -4,17 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import { Box, ImageList, ImageListItem,ImageListItemBar } from "@mui/material";
-import clock from '../assets/clock.png';
-import wallSticker from '../assets/wall sticker.png';
-import fridgeDecor from '../assets/fridgemagnet.png';
-import dinnerImage from '../assets/dinner.jpg'
-import ovenImage from '../assets/oven.jpg'
-import flowerImage from '../assets/flower.jpg'
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
+import {IconButton,Button, Snackbar, Alert} from '@mui/material';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { useNavigate } from 'react-router-dom';
-import {allProducts} from '../components/data';
+import {allProducts,newArrival,bestSeller} from '../components/data';
 import { CartContext } from "../context/cart-context";
 
 
@@ -28,44 +21,8 @@ function a11yProps(index) {
 export default function HomePageTab() {
   const [value, setValue] = React.useState(0); 
     const { addToCart } = useContext(CartContext);
-  
+    const [openSnackbar, setOpenSnackbar] = useState(false);
   const navigate = useNavigate();
-  const newArrival = [
-    {
-      img: clock,
-      title: "Wall clock",
-      price:'200/-'
-    },
-    {
-      img: wallSticker,
-      title: "Wall sticker",
-      price:'100/-'
-    },
-    {
-      img: fridgeDecor,
-      title: "Fridge Magnet",
-      price:'100/-'
-    }
-  ];
-
-  const bestSeller = [
-    {
-      img: flowerImage,
-      title: "Flower vase",
-      price:'1000/-'
-    },
-    {
-      img: ovenImage,
-      title: "Oven",
-      price:'30,000/-'
-    },
-    {
-      img: dinnerImage,
-      title: "Dinner set",
-      price:'2000/-'
-    }
-  ];
-
   const getImage = (index) =>{
     switch(index){
       case 0 : 
@@ -83,6 +40,10 @@ export default function HomePageTab() {
     const page = 'Shop All'
     const productList = allProducts
     navigate('/product-list',{ state: { productList,page} }); // Navigate to the Product List page
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false); // Close the snackbar
   };
   return (
     <>
@@ -121,7 +82,10 @@ export default function HomePageTab() {
               actionIcon={
                 <IconButton
                   sx={{cursor:'pointer',padding:'9px',borderRadius:'8px'}}
-                  onClick={() => addToCart({ ...item, id: index })}
+                  onClick={() => {
+                    addToCart({ ...item})
+                    setOpenSnackbar(true);
+                  }}
                   >
                 <ShoppingBagOutlinedIcon sx={{color:'#d4dca4'}}/>
                 </IconButton>
@@ -134,6 +98,15 @@ export default function HomePageTab() {
           </ImageListItem>
         ))}
       </ImageList>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={2000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert onClose={handleCloseSnackbar} severity="success" variant="filled" sx={{ width: '100%' }}>
+          Item added to cart!
+        </Alert>
+      </Snackbar>
     </Box>  
     </>
   );

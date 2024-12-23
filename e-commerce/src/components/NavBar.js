@@ -56,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar() {
   const navigate = useNavigate();
-  const { cartItems } = React.useContext(CartContext);
+  const { cartCount } = React.useContext(CartContext);
 
   const handleCartClick = () => {
     navigate("/cart");
@@ -99,7 +99,7 @@ export default function SearchAppBar() {
             sx={{ ml: 2 }}
             onClick={handleCartClick}
           >
-            <Badge badgeContent={cartItems.length} color="secondary">
+            <Badge badgeContent={cartCount} color="secondary">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>

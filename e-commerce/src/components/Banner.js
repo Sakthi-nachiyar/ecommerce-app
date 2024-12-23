@@ -18,7 +18,7 @@ const Banner = () => {
     {
       img: appliancesImage,
       title: "Appliances",
-        state: { productList: appliances, page:'Appliances'} 
+      state: { productList: appliances, page:'Appliances'} 
     },
     {
       img: furnitureImage,

@@ -222,10 +222,46 @@ export const newArrival = [
     img: fridgeDecor,
     title: "Fridge Magnet",
     price:'100/-'
+  },
+  {
+    id:'Wall clock',
+    img: clock,
+    title: "Wall clock",
+    price:'200/-'
+  },
+  {
+    id:'Wall sticker',
+    img: wallSticker,
+    title: "Wall sticker",
+    price:'100/-'
+  },
+  {
+    id:'Fridge Magnet',
+    img: fridgeDecor,
+    title: "Fridge Magnet",
+    price:'100/-'
   }
 ];
 
 export const bestSeller = [
+  {
+    id:'Flower vase',
+    img: flowerImage,
+    title: "Flower vase",
+    price:'1000/-'
+  },
+  {
+    id:'Oven',
+    img: ovenImage,
+    title: "Oven",
+    price:'30,000/-'
+  },
+  {
+    id:'dinnerSet',
+    img: dinnerImage,
+    title: "Dinner set",
+    price:'2000/-'
+  },
   {
     id:'Flower vase',
     img: flowerImage,

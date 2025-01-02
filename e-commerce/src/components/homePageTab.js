@@ -3,8 +3,8 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import { Box, ImageList, ImageListItem,ImageListItemBar } from "@mui/material";
-import {IconButton,Button, Snackbar, Alert} from '@mui/material';
+import { Box,IconButton,Button, Snackbar, Alert,Card,CardMedia,CardActions,CardContent } from "@mui/material";
+import Grid from '@mui/material/Grid2';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { useNavigate } from 'react-router-dom';
 import {allProducts,newArrival,bestSeller} from '../components/data';
@@ -63,23 +63,26 @@ export default function HomePageTab() {
         </Tabs>
       </AppBar>
       </Box>
-      <ImageList variant="standard" cols={3} gap={30}>
-        {getImage(value).map((item,index) =>(
-           <ImageListItem key={index}>
-           <img
-             src={item.img}
-             alt={item.title}
-             loading="lazy"
-             style={{ width: '50%', borderRadius: '8px' }}
-           />
-            <ImageListItemBar
-              sx={{
-                  fontSize:10,padding:'4px'
-              }}
-              title={item.title}
-              position="below"
-              actionIcon={
-                <IconButton
+      <Grid container spacing={2} column={6} sx={{ padding: 2 }}>
+      {getImage(value).map((item,index) =>(
+      <Grid size={2} item xs={12} sm={6} md={4} key={index}>
+      <Card sx={{ maxWidth: 345}}>
+        <CardMedia
+          component="img"
+          alt={item.title}
+          height="250"
+          image={item.img}
+        />
+        <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {item.title}
+              </Typography>
+              <Typography variant="h6" color="text.primary">
+              ₹{item.price}
+              </Typography>
+            </CardContent>
+            <CardActions>
+            <IconButton
                   sx={{cursor:'pointer',padding:'9px',borderRadius:'8px'}}
                   onClick={() => {
                     addToCart({ ...item})
@@ -88,15 +91,11 @@ export default function HomePageTab() {
                   >
                 <ShoppingBagOutlinedIcon sx={{color:'#d4dca4'}}/>
                 </IconButton>
-              }
-              actionPosition="right"
-            />
-            <Typography sx={{ margin: '-16px 0px 0px 5px'}}>
-            ₹{item.price}
-            </Typography>
-          </ImageListItem>
-        ))}
-      </ImageList>
+            </CardActions>
+            </Card>
+            </Grid>
+      ))}
+      </Grid>
       <Button variant="contained" onClick={handleShopAllClick} style={{minWidth:'130px',left:'5px'}}>Shop All</Button>
       <Snackbar
         open={openSnackbar}

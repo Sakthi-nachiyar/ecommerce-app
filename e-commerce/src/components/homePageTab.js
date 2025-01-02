@@ -47,7 +47,7 @@ export default function HomePageTab() {
   };
   return (
     <>
-    <Box sx={{ bgcolor: 'background.paper', width: 800 ,padding:'40px'}}>
+    <Box sx={{ bgcolor: 'background.paper', width:'100%',padding:'40px'}}>
       <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',mb:2}}>
       <AppBar position="static">
         <Tabs
@@ -62,7 +62,6 @@ export default function HomePageTab() {
           <Tab label="Best sellers" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <Button variant="contained" onClick={handleShopAllClick} style={{minWidth:'130px',left:'242px'}}>Shop All</Button>
       </Box>
       <ImageList variant="standard" cols={3} gap={30}>
         {getImage(value).map((item,index) =>(
@@ -71,7 +70,7 @@ export default function HomePageTab() {
              src={item.img}
              alt={item.title}
              loading="lazy"
-             style={{ width: '100%', borderRadius: '8px' }}
+             style={{ width: '50%', borderRadius: '8px' }}
            />
             <ImageListItemBar
               sx={{
@@ -98,6 +97,7 @@ export default function HomePageTab() {
           </ImageListItem>
         ))}
       </ImageList>
+      <Button variant="contained" onClick={handleShopAllClick} style={{minWidth:'130px',left:'5px'}}>Shop All</Button>
       <Snackbar
         open={openSnackbar}
         autoHideDuration={2000}

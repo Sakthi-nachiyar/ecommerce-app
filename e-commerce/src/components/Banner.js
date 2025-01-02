@@ -5,9 +5,11 @@ import decorImage from "../assets/Decor.png";
 import appliancesImage from "../assets/appliances.png";
 import furnitureImage from "../assets/furniture.png";
 import kitchenWareImage from "../assets/kitchenware.png";
+import diningImage from '../assets/dining.png';
+import BedRoomImage from '../assets/BedRoom.png';
 import {decor,appliances,furniture,kitchenware} from './data'
 import { Link } from 'react-router-dom'; 
-import HomePageTab from "./homePageTab"
+import HomePageTab from "./homePageTab";
 const Banner = () => {
   const itemData = [
     {
@@ -30,6 +32,16 @@ const Banner = () => {
       title: "Kitchenware",
        state: { productList: kitchenware, page:'Kitchenware'} 
     },
+    {
+      img: diningImage,
+      title: "Dining Room",
+     state: { productList: furniture, page:'Furnishings'}
+    },
+    {
+      img: BedRoomImage,
+      title: "Bed Room",
+       state: { productList: kitchenware, page:'Kitchenware'} 
+    },
   ];
 
   const srcset = (image, size)=>{
@@ -41,24 +53,40 @@ const Banner = () => {
   return (
     <>
       <ImageList
-        sx={{padding:'0px 30px',height:'220px',justifyItems:'center'}}
+        sx={{width: '100%',padding:'0px 30px',justifyItems:'center'}}
         variant="quilted"
-        cols={4}
-        rowHeight={140}
-        gap= {220}
+        cols={6}
+        gap= {16}
       >
         {itemData.map((item) => (
           <ImageListItem
             key={item.img}
             cols={item.cols || 1}
             rows={item.rows || 1}
-            style={{ cursor: 'pointer' }}
+            sx={{
+              position: 'relative',
+              overflow: 'hidden',
+              cursor: 'pointer',
+              '&:hover img': {
+                transform: 'scale(1.1)', // Scale effect
+                transition: 'transform 0.3s ease',
+              },
+              '&:hover .image-bar': {
+                opacity: 1, // Make title bar more prominent
+                transition: 'opacity 0.3s ease',
+              },
+            }}
           >
           <Link to={'/product-list'} state={item.state}>
             <img
               {...srcset(item.img, 100)}
               alt={item.title}
               loading="lazy"
+              style={{
+                width: '90%',
+                display: 'block',
+                transition: 'transform 0.3s ease',
+              }}
             />
             </Link>;
             <ImageListItemBar
@@ -66,7 +94,7 @@ const Banner = () => {
                 position="below"
                 sx={{
                     width:'100px',
-                    left:'20px'
+                    left:'66px'
                   }}
             />
           </ImageListItem>
